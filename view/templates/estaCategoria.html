@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width={device-width}, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="text-align: center;">
+        <img src="{{url_for('static',filename= EstaCategoria.url_img)}}" width="800" height="200">
+        <h1>{{EstaCategoria.titulo}}</h1>
+         <fieldset>
+             {{EstaCategoria.descricao}}
+         </fieldset>
+        
+        {% for video in VideosDestaCategoria %}
+        <fieldset style="text-align: left;">
+            <table>
+                
+                <tr>
+                    <td>
+                        <a href="{{url_for('ExibeVideo', id = video.id)}}"><img src="{{url_for('static',filename= video.url_img)}}" width="200" height="200"></a>
+                    </td>
+                    <td>
+                        
+                            <h5><a href="{{url_for('ExibeVideo', id = video.id)}}">{{ video.titulo }}</a></h5>
+                            
+                            
+                            <p>Vizializações: {{video.qtd_visualizacao}}</p>
+                            <p>Curtidas: {{video.qtd_curtidas}}</p>
+                            <p>Publicação: {{video.data_publicacao}}</p>
+                            <p>Sinopse: {{video.descricao}}</p>
+                        
+                    </td>
+                </tr>
+            </table>
+        </fieldset>        
+        {% endfor %}
+
+    </div>
+
+
+
+
+
+</body>
+</html>
